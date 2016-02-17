@@ -3,18 +3,16 @@
 /**
  * Fortnight.php
  *
- * @author David Yell <dyell@ukwebmedia.com>
- * @copyright 2016 UK Web Media Ltd
+ * @author David Yell <neon1024@gmail.com>
  */
 
-namespace App\Lib;
+namespace Fortnight;
 
 use DateTimeImmutable;
 use DateTimeInterface;
 
 class Fortnight
 {
-
     /**
      * Get the start and end dates for the fortnight using a date
      *
@@ -51,5 +49,4 @@ class Fortnight
             'end' => $end->format('Y-m-d')
         ];
     }
-
 }

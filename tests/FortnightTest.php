@@ -3,19 +3,23 @@
 /**
  * FortnightTest.php
  *
- * @author David Yell <dyell@ukwebmedia.com>
- * @copyright 2016 UK Web Media Ltd
+ * @author David Yell <neon1024@gmail.com>
  */
 
-namespace TestCase\Lib;
+namespace Fortnight\Test\Lib;
 
-use App\Lib\Fortnight;
-use Cake\TestSuite\TestCase;
 use DateTimeImmutable;
 use DateTimeInterface;
+use Fortnight\Fortnight;
+use PHPUnit_Framework_TestCase;
 
-class FortnightTest extends TestCase
+class FortnightTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @type \Fortnight\Fortnight Class instance
+     */
+    protected $Fortnight;
+
     public function setUp()
     {
         parent::setUp();

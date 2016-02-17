@@ -1,6 +1,8 @@
 # Fortnights
 A small class which can calculate the start and end dates for a two week period when given a date.
 
+If you are looking for a more featured Time Period library, check out [Period](http://period.thephpleague.com/) from The PHP League.
+
 ## Installation
 `composer require davidyell/fortnights`
 

@@ -72,4 +72,20 @@ class FortnightTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test that a different format works
+     */
+    public function testFormat()
+    {
+        $result = $this->Fortnight->dates(new DateTimeImmutable('2016-02-02'), 'l jS F Y');
+        $expected = [
+            'start' => 'Monday 1st February 2016',
+            'end' => 'Sunday 14th February 2016'
+        ];
+
+        $this->assertEquals($expected, $result);
+    }
+
+
 }

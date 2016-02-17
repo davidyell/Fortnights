@@ -17,10 +17,11 @@ class Fortnight
      * Get the start and end dates for the fortnight using a date
      *
      * @param \DateTimeInterface|null $date The date to calculate for or null for the current date
+     * @param string $format A valid date format from http://php.net/manual/en/function.date.php
      *
      * @return array
      */
-    public function dates(DateTimeInterface $date = null)
+    public function dates(DateTimeInterface $date = null, $format = 'Y-m-d')
     {
         if ($date === null) {
             $date = new DateTimeImmutable();
@@ -35,18 +36,18 @@ class Fortnight
         $monday = new DateTimeImmutable($timestamp);
         $weekNo = (int)date('W', $monday->format('U'));
 
-        if ($weekNo % 2 === 0) { // Even
+        if ($weekNo % 2 === 0) {
             $start = $monday->sub(new \DateInterval('P7D'));
             $end = $start->add(new \DateInterval('P13D'));
 
-        } else { // Odd
+        } else {
             $start = $monday;
             $end = $start->add(new \DateInterval('P13D'));
         }
 
         return [
-            'start' => $start->format('Y-m-d'),
-            'end' => $end->format('Y-m-d')
+            'start' => $start->format($format),
+            'end' => $end->format($format)
         ];
     }
 }

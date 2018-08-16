@@ -8,12 +8,11 @@
 
 namespace Fortnight\Test\Lib;
 
-use DateTimeImmutable;
 use DateTimeInterface;
 use Fortnight\Fortnight;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class FortnightTest extends PHPUnit_Framework_TestCase
+class FortnightTest extends TestCase
 {
     /**
      * @type \Fortnight\Fortnight Class instance
@@ -32,27 +31,31 @@ class FortnightTest extends PHPUnit_Framework_TestCase
         unset($this->Fortnight);
     }
 
-    public function providerDates()
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public function providerDates(): array
     {
         return [
-            [
-                new DateTimeImmutable('2016-02-02'), // Week 5
+            'Week 5' => [
+                new \DateTimeImmutable('2016-02-02'),
                 ['start' => '2016-02-01', 'end' => '2016-02-14']
             ],
-            [
-                new DateTimeImmutable('2016-02-17'), // Week 7
+            'Week 7' => [
+                new \DateTimeImmutable('2016-02-17'),
                 ['start' => '2016-02-15', 'end' => '2016-02-28']
             ],
-            [
-                new DateTimeImmutable('2016-02-13'), // Week 6
+            'Week 6' => [
+                new \DateTimeImmutable('2016-02-13'),
                 ['start' => '2016-02-01', 'end' => '2016-02-14']
             ],
-            [
-                new DateTimeImmutable('2016-01-01'), // Week 53
+            'Week 53' => [
+                new \DateTimeImmutable('2016-01-01'),
                 ['start' => '2015-12-28', 'end' => '2016-01-10']
             ],
-            [
-                new DateTimeImmutable('2016-02-01'), // Week 5
+            'Week 5 again' => [
+                new \DateTimeImmutable('2016-02-01'),
                 ['start' => '2016-02-01', 'end' => '2016-02-14']
             ],
         ];
@@ -65,6 +68,7 @@ class FortnightTest extends PHPUnit_Framework_TestCase
      * @param array $expected Array of start and end date for the fortnight
      *
      * @dataProvider providerDates
+     * @throws \Exception
      */
     public function testDates(DateTimeInterface $date, $expected)
     {
@@ -75,10 +79,12 @@ class FortnightTest extends PHPUnit_Framework_TestCase
 
     /**
      * Test that a different format works
+     *
+     * @throws \Exception
      */
     public function testFormat()
     {
-        $result = $this->Fortnight->dates(new DateTimeImmutable('2016-02-02'), 'l jS F Y');
+        $result = $this->Fortnight->dates(new \DateTimeImmutable('2016-02-02'), 'l jS F Y');
         $expected = [
             'start' => 'Monday 1st February 2016',
             'end' => 'Sunday 14th February 2016'

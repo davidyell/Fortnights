@@ -20,8 +20,9 @@ class Fortnight
      * @param string $format A valid date format from http://php.net/manual/en/function.date.php
      *
      * @return array
+     * @throws \Exception When an error is encountered
      */
-    public function dates(DateTimeInterface $date = null, $format = 'Y-m-d')
+    public function dates(?DateTimeInterface $date = null, string $format = 'Y-m-d'): array
     {
         if ($date === null) {
             $date = new DateTimeImmutable();
